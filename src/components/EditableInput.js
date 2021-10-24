@@ -9,8 +9,8 @@ const EditableInput = ({
     initialValue,
     onSave,
     label = null,
-    placeholder = 'Write your nickname',
-    emptyMsg = 'Input cannot be empty... Please type your name.',
+    placeholder = 'Write your Username',
+    emptyMsg = 'Your Username cannot be empty ...',
     ...inputProps
 }) => {
     const [input, setInput] = useState(initialValue);
@@ -30,14 +30,15 @@ const EditableInput = ({
 
         if (trimmed === '') {
             toaster.push(
-                <Message showIcon type="error" duration={4000}>
+                <Message showIcon type="warning" duration={4000}>
                     {emptyMsg}
                 </Message>,
                 { placement: 'topStart' }
             );
+            setInput(initialValue);
         }
 
-        if (trimmed !== initialValue) {
+        if (trimmed !== initialValue && trimmed !== '') {
             await onSave(trimmed);
         }
 

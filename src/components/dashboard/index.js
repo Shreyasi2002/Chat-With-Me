@@ -4,14 +4,32 @@ import React from 'react';
 
 import { Exit } from '@rsuite/icons';
 
-import { Button, Divider, Drawer } from 'rsuite';
+import { Button, Divider, Drawer, toaster, Message } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
+import { database } from '../../misc/firebase';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
 
-    const onSave = async newData => {};
+    const onSave = async newData => {
+        const userName = database.ref(`/profiles/${profile.uid}`).child('name');
+
+        try {
+            await userName.set(newData);
+            toaster.push(
+                <Message showIcon type="success" duration={4000}>
+                    Success : Your Username has been updated to {newData}
+                </Message>
+            );
+        } catch (error) {
+            toaster.push(
+                <Message showIcon type="error" duration={4000}>
+                    {error.message}
+                </Message>
+            );
+        }
+    };
 
     return (
         <>
@@ -23,10 +41,10 @@ const DashboardShow = ({ onSignout }) => {
                 <h3>Hey!! {profile.name}</h3>
                 <Divider />
                 <EditableInput
-                    name="nickname"
+                    name="username"
                     initialValue={profile.name}
                     onSave={onSave}
-                    label={<h4 className="mb-2">Nickname</h4>}
+                    label={<h5 className="mb-2">Username</h5>}
                 />
                 <Drawer.Actions>
                     <Button
