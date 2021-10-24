@@ -3,7 +3,7 @@
 import React, { useCallback, useState } from 'react';
 
 import { Close, Edit, CheckOutline } from '@rsuite/icons';
-import { Input, InputGroup, toaster, Message } from 'rsuite';
+import { Input, InputGroup, toaster, Message, Tooltip, Whisper } from 'rsuite';
 
 const EditableInput = ({
     initialValue,
@@ -57,14 +57,36 @@ const EditableInput = ({
                     onChange={onInputChange}
                 />
 
-                <InputGroup.Button onClick={onEditClick}>
-                    {isEditable ? <Close style={{ color: 'red' }} /> : <Edit />}
-                </InputGroup.Button>
+                <Whisper
+                    placement="top"
+                    controlId="control-id-hover"
+                    trigger="hover"
+                    speaker={
+                        <Tooltip>
+                            {isEditable ? 'Discard Changes' : 'Edit'}
+                        </Tooltip>
+                    }
+                >
+                    <InputGroup.Button onClick={onEditClick}>
+                        {isEditable ? (
+                            <Close style={{ color: 'red' }} />
+                        ) : (
+                            <Edit />
+                        )}
+                    </InputGroup.Button>
+                </Whisper>
 
                 {isEditable && (
-                    <InputGroup.Button onClick={onSaveClick}>
-                        <CheckOutline style={{ color: 'green' }} />
-                    </InputGroup.Button>
+                    <Whisper
+                        placement="top"
+                        controlId="control-id-hover"
+                        trigger="hover"
+                        speaker={<Tooltip>Save Changes</Tooltip>}
+                    >
+                        <InputGroup.Button onClick={onSaveClick}>
+                            <CheckOutline style={{ color: 'green' }} />
+                        </InputGroup.Button>
+                    </Whisper>
                 )}
             </InputGroup>
         </div>

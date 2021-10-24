@@ -55,7 +55,7 @@ const SignIn = () => {
             );
         } catch (err) {
             toaster.push(
-                <Message showIcon type="error" duration={4000}>
+                <Message showIcon type="warning" duration={4000}>
                     {err.message}
                 </Message>
             );
