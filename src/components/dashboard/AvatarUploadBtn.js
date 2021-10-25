@@ -80,7 +80,7 @@ const AvatarUploadBtn = () => {
 
             toaster.push(
                 <Message showIcon type="success" duration={4000}>
-                    Avatar uploaded successfully.
+                    Profile Picture uploaded successfully.
                 </Message>,
                 { placement: 'topStart' }
             );
@@ -103,7 +103,7 @@ const AvatarUploadBtn = () => {
                     htmlFor="avatar-upload"
                     className="d-block cursor-pointer padded"
                 >
-                    Select new Avatar
+                    Select new Profile Picture
                     <input
                         id="avatar-upload"
                         type="file"
@@ -115,7 +115,7 @@ const AvatarUploadBtn = () => {
 
                 <Modal open={isOpen} onClose={close}>
                     <Modal.Header>
-                        <Modal.Title>Upload New Avatar</Modal.Title>
+                        <Modal.Title>Profile Picture</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div className="d-flex justify-content-center align-items-center">
@@ -151,7 +151,7 @@ const AvatarUploadBtn = () => {
                             onClick={onUploadClick}
                             disabled={isLoading}
                         >
-                            Upload new Avatar
+                            Upload New Picture
                         </Button>
                     </Modal.Footer>
                 </Modal>
