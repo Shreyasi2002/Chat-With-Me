@@ -58,20 +58,30 @@ const AvatarUploadBtn = () => {
                         <Modal.Title>Upload New Avatar</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <div>
+                                <input
+                                    type="range"
+                                    step="0.01"
+                                    min="1"
+                                    max="2"
+                                    id="scale"
+                                    defaultValue="1.2"
+                                />
+                            </div>
+                        </div>
                         <div className="d-flex justify-content-center align-items-center h-100">
                             {img && (
                                 <AvatarEditor
                                     image={img}
                                     width={200}
                                     height={200}
-                                    border={50}
+                                    border={20}
                                     borderRadius={100}
-                                    color={[255, 255, 255, 0.6]} // RGBA
-                                    scale={1.2}
-                                    rotate={0}
                                 />
                             )}
                         </div>
+                        <br />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button block appearance="ghost">
