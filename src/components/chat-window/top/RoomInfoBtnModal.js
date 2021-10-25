@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
+import React, { memo } from 'react';
 import { Button, Modal } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useModalState } from '../../../misc/custom-hooks';
@@ -17,7 +17,9 @@ const RoomInfoBtnModal = () => {
             </Button>
             <Modal open={isOpen} onClose={close}>
                 <Modal.Header>
-                    <Modal.Title>About {name}</Modal.Title>
+                    <Modal.Title>
+                        <b>About {name}</b>
+                    </Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -40,4 +42,4 @@ const RoomInfoBtnModal = () => {
     );
 };
 
-export default RoomInfoBtnModal;
+export default memo(RoomInfoBtnModal);

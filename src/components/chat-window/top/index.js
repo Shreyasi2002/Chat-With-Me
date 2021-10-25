@@ -17,7 +17,7 @@ const Top = () => {
     return (
         <div>
             <div className="d-flex justify-content-between align-items-center">
-                <h4>
+                <h4 className="text-disappear d-flex align-items-center">
                     <IconButton
                         icon={<Icon as={BsBoxArrowLeft} size="2em" />}
                         href="/"
