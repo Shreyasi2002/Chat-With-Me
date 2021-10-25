@@ -8,6 +8,7 @@ import { Button, Divider, Drawer, toaster, Message } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 import { database } from '../../misc/firebase';
+import ProviderBlock from './ProviderBlock';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
@@ -20,13 +21,15 @@ const DashboardShow = ({ onSignout }) => {
             toaster.push(
                 <Message showIcon type="success" duration={4000}>
                     Success : Your Username has been updated to {newData}
-                </Message>
+                </Message>,
+                { placement: 'topStart' }
             );
         } catch (error) {
             toaster.push(
                 <Message showIcon type="error" duration={4000}>
                     {error.message}
-                </Message>
+                </Message>,
+                { placement: 'topStart' }
             );
         }
     };
@@ -39,6 +42,7 @@ const DashboardShow = ({ onSignout }) => {
 
             <Drawer.Body>
                 <h3>Hey!! {profile.name}</h3>
+                <ProviderBlock />
                 <Divider />
                 <EditableInput
                     name="username"
@@ -46,6 +50,7 @@ const DashboardShow = ({ onSignout }) => {
                     onSave={onSave}
                     label={<h5 className="mb-2">Username</h5>}
                 />
+                <Divider />
                 <Drawer.Actions>
                     <Button
                         block
