@@ -1,7 +1,8 @@
 /* eslint-disable arrow-body-style */
 import React, { useCallback } from 'react';
 
-import { Dashboard } from '@rsuite/icons';
+import { Icon } from '@rsuite/icons';
+import { ImProfile } from 'react-icons/im';
 
 import { Button, Drawer, Message, toaster } from 'rsuite';
 import { useMediaQuery, useModalState } from '../../misc/custom-hooks';
@@ -28,7 +29,7 @@ const DashboardToggle = () => {
     return (
         <>
             <Button block color="blue" appearance="primary" onClick={open}>
-                <Dashboard /> Dashboard
+                <Icon as={ImProfile} size="1.5em" /> Profile
             </Button>
             <Drawer
                 full={isMobile}
