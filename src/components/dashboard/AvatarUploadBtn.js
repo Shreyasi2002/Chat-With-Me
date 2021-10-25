@@ -81,6 +81,7 @@ const AvatarUploadBtn = () => {
             await userAvatarRef.set(downloadUrl);
 
             setIsLoading(false);
+            close();
 
             toaster.push(
                 <Message showIcon type="success" duration={4000}>
@@ -127,18 +128,6 @@ const AvatarUploadBtn = () => {
                         <Modal.Title>Profile Picture</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <div className="d-flex justify-content-center align-items-center">
-                            <div>
-                                <input
-                                    type="range"
-                                    step="0.01"
-                                    min="1"
-                                    max="2"
-                                    id="scale"
-                                    defaultValue="1.2"
-                                />
-                            </div>
-                        </div>
                         <div className="d-flex justify-content-center align-items-center h-100">
                             {img && (
                                 <AvatarEditor
