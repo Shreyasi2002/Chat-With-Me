@@ -129,7 +129,6 @@ const ProviderBlock = () => {
                         onClick={linkGoogle}
                     >
                         <Icon as={FaSvgIcon} faIcon={google} /> Link to Google
-                        Account
                     </Button>
                 )}
                 {!isConnected['facebook.com'] && (
@@ -140,7 +139,7 @@ const ProviderBlock = () => {
                         onClick={linkFacebook}
                     >
                         <Icon as={FaSvgIcon} faIcon={facebook} /> Link to
-                        Facebook Account
+                        Facebook
                     </Button>
                 )}
             </div>

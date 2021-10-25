@@ -46,12 +46,14 @@ const DashboardShow = ({ onSignout }) => {
                 <ProviderBlock />
                 <Divider />
                 <AvatarUploadBtn />
+                <br />
                 <EditableInput
                     name="username"
                     initialValue={profile.name}
                     onSave={onSave}
                     label={<h5 className="mb-2">Username</h5>}
                 />
+                <br />
                 <Divider />
                 <Drawer.Actions>
                     <Button

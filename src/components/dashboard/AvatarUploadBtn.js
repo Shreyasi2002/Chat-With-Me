@@ -2,11 +2,15 @@
 import React, { useState, useRef } from 'react';
 import { Button, Modal, toaster, Message } from 'rsuite';
 
+import { Icon } from '@rsuite/icons';
+import { FaCamera } from 'react-icons/fa';
+
 import AvatarEditor from 'react-avatar-editor';
 
 import { useModalState } from '../../misc/custom-hooks';
 import { database, storage } from '../../misc/firebase';
 import { useProfile } from '../../context/profile.context';
+import ProfileAvatar from '../ProfileAvatar';
 
 const fileInputTypes = '.png, .jpeg, .jpg';
 
@@ -99,11 +103,16 @@ const AvatarUploadBtn = () => {
     return (
         <div className="mt-3 text-center">
             <div>
+                <ProfileAvatar
+                    src={profile.avatar}
+                    name={profile.name}
+                    className="width-200 height-200 img-fullsize font-huge"
+                />
                 <label
                     htmlFor="avatar-upload"
                     className="d-block cursor-pointer padded"
                 >
-                    Select new Profile Picture
+                    <Icon as={FaCamera} size="1.3em" /> Update Profile Picture
                     <input
                         id="avatar-upload"
                         type="file"
