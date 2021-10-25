@@ -6,6 +6,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
 
+import 'firebase/compat/storage';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: 'AIzaSyDD6XcfCU2z_LNgIRRlI29oZ6fnSA7RPTc',
@@ -23,3 +25,4 @@ const app = firebase.initializeApp(firebaseConfig);
 
 export const auth = app.auth();
 export const database = app.database();
+export const storage = app.storage();
