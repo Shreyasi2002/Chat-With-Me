@@ -9,6 +9,7 @@ import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
+import AvatarUploadBtn from './AvatarUploadBtn';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
@@ -44,6 +45,7 @@ const DashboardShow = ({ onSignout }) => {
                 <h3>Hey!! {profile.name}</h3>
                 <ProviderBlock />
                 <Divider />
+                <AvatarUploadBtn />
                 <EditableInput
                     name="username"
                     initialValue={profile.name}
