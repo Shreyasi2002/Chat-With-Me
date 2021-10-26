@@ -11,7 +11,6 @@ import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
 import AvatarUploadBtn from './AvatarUploadBtn';
 import { getUserUpdates } from '../../misc/helpers';
-import EditableDescription from '../EditableDescription';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
@@ -67,13 +66,6 @@ const DashboardShow = ({ onSignout }) => {
                     initialValue={profile.name}
                     onSave={onSave}
                     label={<h6 className="mb-2">Username</h6>}
-                />
-                <br />
-                <EditableDescription
-                    name="about"
-                    initialValue="Hello..."
-                    onSave={onSave}
-                    label={<h6 className="mb-2">About</h6>}
                 />
 
                 <Divider />
