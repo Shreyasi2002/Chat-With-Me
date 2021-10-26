@@ -1,17 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
 import React, { useCallback, useState } from 'react';
 
 import { Close, Edit, CheckOutline } from '@rsuite/icons';
-import { Input, InputGroup, toaster, Message, Tooltip, Whisper } from 'rsuite';
+import { Input, InputGroup, Tooltip, Whisper } from 'rsuite';
 
-const EditableInput = ({
+const EditableDescription = ({
     initialValue,
     onSave,
     label = null,
-    placeholder = 'Write your Username',
-    emptyMsg = 'Your Username cannot be empty ...',
-    wrapperClassName = '',
+    placeholder = 'This room is for ...',
     ...inputProps
 }) => {
     const [input, setInput] = useState(initialValue);
@@ -29,17 +25,7 @@ const EditableInput = ({
     const onSaveClick = async () => {
         const trimmed = input.trim();
 
-        if (trimmed === '') {
-            toaster.push(
-                <Message showIcon type="warning" duration={4000}>
-                    {emptyMsg}
-                </Message>,
-                { placement: 'topStart' }
-            );
-            setInput(initialValue);
-        }
-
-        if (trimmed !== initialValue && trimmed !== '') {
+        if (trimmed !== initialValue) {
             await onSave(trimmed);
         }
 
@@ -47,12 +33,14 @@ const EditableInput = ({
     };
 
     return (
-        <div className={wrapperClassName}>
+        <div>
             {label}
             <InputGroup>
                 <Input
                     {...inputProps}
                     disabled={!isEditable}
+                    as="textarea"
+                    rows={5}
                     placeholder={placeholder}
                     value={input}
                     onChange={onInputChange}
@@ -94,4 +82,4 @@ const EditableInput = ({
     );
 };
 
-export default EditableInput;
+export default EditableDescription;

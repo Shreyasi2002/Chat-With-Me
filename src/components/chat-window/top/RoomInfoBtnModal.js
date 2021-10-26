@@ -24,7 +24,13 @@ const RoomInfoBtnModal = () => {
 
                 <Modal.Body>
                     <b className="mb-1">Decsription</b>
-                    <p>{description}</p>
+                    <p>
+                        {description.split('\n').map(line => (
+                            <>
+                                {line} <br />
+                            </>
+                        ))}
+                    </p>
                 </Modal.Body>
 
                 <Modal.Footer>
