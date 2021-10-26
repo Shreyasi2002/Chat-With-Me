@@ -46,7 +46,7 @@ const DashboardShow = ({ onSignout }) => {
         <>
             <Drawer.Header>
                 <Drawer.Title>
-                    <b>Profile</b>
+                    <h4>Profile</h4>
                 </Drawer.Title>
             </Drawer.Header>
 
