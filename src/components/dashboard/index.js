@@ -10,15 +10,22 @@ import EditableInput from '../EditableInput';
 import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
 import AvatarUploadBtn from './AvatarUploadBtn';
+import { getUserUpdates } from '../../misc/helpers';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
 
     const onSave = async newData => {
-        const userName = database.ref(`/profiles/${profile.uid}`).child('name');
-
         try {
-            await userName.set(newData);
+            const updates = await getUserUpdates(
+                profile.uid,
+                'name',
+                newData,
+                database
+            );
+
+            await database.ref().update(updates);
+
             toaster.push(
                 <Message showIcon type="success" duration={4000}>
                     Success : Your Username has been updated to {newData}
