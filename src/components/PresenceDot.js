@@ -6,7 +6,7 @@ import { usePresence } from '../misc/custom-hooks';
 
 const getColor = presence => {
     if (!presence) {
-        return 'gray';
+        return 'cyan';
     }
 
     switch (presence.state) {
@@ -17,7 +17,7 @@ const getColor = presence => {
             return 'red';
 
         default:
-            return 'gray';
+            return 'cyan';
     }
 };
 

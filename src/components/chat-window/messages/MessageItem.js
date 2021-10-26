@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
+import { Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
 import PresenceDot from '../../PresenceDot';
 
@@ -32,7 +33,9 @@ const MessageItem = ({ messages }) => {
             </div>
 
             <div>
-                <span className="word-break-all">{text}</span>
+                <Message>
+                    <span className="word-break-all">{text}</span>
+                </Message>
             </div>
         </li>
     );
