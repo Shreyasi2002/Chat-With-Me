@@ -6,6 +6,16 @@ import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
 
+export const getFormattedMessage = text => {
+    const lines = text.split('\n');
+
+    return lines.map(line => (
+        <>
+            {line} <br />
+        </>
+    ));
+};
+
 const MessageItem = ({ messages }) => {
     const { author, createdAt, text } = messages;
 
@@ -34,7 +44,9 @@ const MessageItem = ({ messages }) => {
 
             <div>
                 <Message>
-                    <span className="word-break-all">{text}</span>
+                    <span className="word-break-all">
+                        {getFormattedMessage(text)}
+                    </span>
                 </Message>
             </div>
         </li>
