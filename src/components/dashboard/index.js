@@ -11,6 +11,7 @@ import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
 import AvatarUploadBtn from './AvatarUploadBtn';
 import { getUserUpdates } from '../../misc/helpers';
+import EditableDescription from '../EditableDescription';
 
 const DashboardShow = ({ onSignout }) => {
     const { profile } = useProfile();
@@ -50,12 +51,17 @@ const DashboardShow = ({ onSignout }) => {
                 </Drawer.Title>
             </Drawer.Header>
 
-            <Drawer.Body style={{ marginLeft: '-6%', marginRight: '-6%' }}>
+            <Drawer.Body
+                style={{
+                    marginLeft: '-6%',
+                    marginRight: '-6%',
+                }}
+            >
                 <h3>Hey, {profile.name}</h3>
                 <ProviderBlock />
                 <Divider />
                 <AvatarUploadBtn />
-                <br />
+
                 <EditableInput
                     name="username"
                     initialValue={profile.name}
@@ -63,6 +69,13 @@ const DashboardShow = ({ onSignout }) => {
                     label={<h6 className="mb-2">Username</h6>}
                 />
                 <br />
+                <EditableDescription
+                    name="about"
+                    initialValue="Hello..."
+                    onSave={onSave}
+                    label={<h6 className="mb-2">About</h6>}
+                />
+
                 <Divider />
                 <Drawer.Actions>
                     <Button
