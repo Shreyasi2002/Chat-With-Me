@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import TimeAgo from 'timeago-react';
+import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
 
@@ -10,12 +11,18 @@ const MessageItem = ({ messages }) => {
     return (
         <li className="padded mb-1">
             <div className="d-flex align-items-center font-bolder mb-1">
-                <ProfileAvatar
-                    src={author.avatar}
-                    name={author.name}
-                    className="ml-1"
-                    size="s"
+                <PresenceDot
+                    uid={author.uid}
+                    element={
+                        <ProfileAvatar
+                            src={author.avatar}
+                            name={author.name}
+                            className="ml-1"
+                            size="s"
+                        />
+                    }
                 />
+
                 <span className="ml-2">{author.name}</span>
 
                 <TimeAgo
