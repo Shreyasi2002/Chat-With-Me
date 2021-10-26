@@ -113,7 +113,7 @@ const AvatarUploadBtn = () => {
                     htmlFor="avatar-upload"
                     className="d-block cursor-pointer padded"
                 >
-                    <Icon as={FaCamera} size="1.3em" /> Update Profile Picture
+                    Update Profile Picture
                     <input
                         id="avatar-upload"
                         type="file"
@@ -121,6 +121,8 @@ const AvatarUploadBtn = () => {
                         accept={fileInputTypes}
                         onChange={onFileInputChange}
                     />
+                    <br />
+                    <Icon as={FaCamera} size="1.3em" />
                 </label>
 
                 <Modal open={isOpen} onClose={close}>

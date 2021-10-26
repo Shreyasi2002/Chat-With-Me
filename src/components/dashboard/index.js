@@ -39,12 +39,12 @@ const DashboardShow = ({ onSignout }) => {
         <>
             <Drawer.Header>
                 <Drawer.Title>
-                    <h4>Profile</h4>
+                    <b>Profile</b>
                 </Drawer.Title>
             </Drawer.Header>
 
-            <Drawer.Body>
-                <h3>Hey!! {profile.name}</h3>
+            <Drawer.Body style={{ marginLeft: '-6%', marginRight: '-6%' }}>
+                <h3>Hey, {profile.name}</h3>
                 <ProviderBlock />
                 <Divider />
                 <AvatarUploadBtn />
@@ -53,7 +53,7 @@ const DashboardShow = ({ onSignout }) => {
                     name="username"
                     initialValue={profile.name}
                     onSave={onSave}
-                    label={<h5 className="mb-2">Username</h5>}
+                    label={<h6 className="mb-2">Username</h6>}
                 />
                 <br />
                 <Divider />
