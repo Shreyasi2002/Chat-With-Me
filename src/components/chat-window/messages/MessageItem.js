@@ -5,6 +5,8 @@ import React, { memo } from 'react';
 import { Button, Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
 
+import ReactAudioPlayer from 'react-audio-player';
+
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useHover } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
@@ -21,6 +23,16 @@ const renderFileMessage = file => {
             <div className="height-220">
                 <ImgBtnModal src={file.url} fileName={file.name} />
             </div>
+        );
+    }
+
+    if (file.contentType.includes('audio')) {
+        return (
+            <>
+                <ReactAudioPlayer src={file.url} autoPlay controls />
+                <br />
+                <a href={file.url}>Download original</a>
+            </>
         );
     }
 

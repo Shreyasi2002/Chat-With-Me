@@ -86,7 +86,7 @@ const Messages = () => {
         });
 
         toaster.push(
-            <Message showIcon type="info" duration={1500}>
+            <Message showIcon type="info" duration={1000}>
                 {alertMsg}
             </Message>
         );

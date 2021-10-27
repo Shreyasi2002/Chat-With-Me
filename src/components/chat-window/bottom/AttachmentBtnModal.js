@@ -9,7 +9,7 @@ import { InputGroup, Modal, Button, Uploader, toaster, Message } from 'rsuite';
 import { useModalState } from '../../../misc/custom-hooks';
 import { storage } from '../../../misc/firebase';
 
-const MAX_FILE_SIZE = 1000 * 1024 * 5;
+const MAX_FILE_SIZE = 1000 * 1024 * 10;
 
 const AttachmentBtnModal = ({ afterUpload }) => {
     const { chatId } = useParams();
@@ -98,7 +98,7 @@ const AttachmentBtnModal = ({ afterUpload }) => {
                         Send
                     </Button>
                     <div className="text-right mt-2">
-                        <small>* only files less than 5 mb are allowed</small>
+                        <small>* only files less than 10 mb are allowed</small>
                     </div>
                 </Modal.Footer>
             </Modal>
