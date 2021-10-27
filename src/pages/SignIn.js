@@ -2,6 +2,8 @@
 import Icon from '@rsuite/icons/lib/Icon';
 import React from 'react';
 
+import { GiChatBubble } from 'react-icons/gi';
+
 import firebase from 'firebase/compat/app';
 
 import * as facebook from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
@@ -79,7 +81,14 @@ const SignIn = () => {
                     <Col xs={24} md={12} mdOffset={6}>
                         <Panel>
                             <div className="text-center">
-                                <h2>Welcome to ChatWithMe</h2>
+                                <h2>
+                                    Welcome to ChatWithMe{' '}
+                                    <Icon
+                                        as={GiChatBubble}
+                                        size="1.5em"
+                                        className="mb-2"
+                                    />
+                                </h2>
                                 <p>Progressive Chat Platform for ...</p>
                             </div>
 
