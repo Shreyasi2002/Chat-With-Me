@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable consistent-return */
 /* eslint-disable no-alert */
 /* eslint-disable arrow-body-style */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { Button, Message, toaster } from 'rsuite';
+
 import { auth, database, storage } from '../../../misc/firebase';
 import { groupBy, transformToArrayWithId } from '../../../misc/helpers';
 import MessageItem from './MessageItem';
@@ -32,6 +34,12 @@ const Messages = () => {
                 .on('value', snap => {
                     const data = transformToArrayWithId(snap.val());
                     setMessages(data);
+
+                    const node = selfRef.current;
+
+                    setTimeout(() => {
+                        node.scrollTop = node.scrollHeight;
+                    }, 200);
                 });
 
             setLimit(p => p + PAGE_SIZE);
@@ -40,15 +48,7 @@ const Messages = () => {
     );
 
     const onLoadMore = useCallback(() => {
-        // const node = selfRef.current;
-        // const oldHeight = node.scrollHeight;
-
         loadMessages(limit);
-
-        // setTimeout(() => {
-        //     const newHeight = node.scrollHeight;
-        //     node.scrollTop = newHeight - oldHeight;
-        // }, 200);
     }, [loadMessages, limit]);
 
     useEffect(() => {
