@@ -32,7 +32,9 @@ const renderFileMessage = file => {
             <>
                 <ReactAudioPlayer src={file.url} controls />
                 <br />
-                <a href={file.url}>Download original</a>
+                <a href={file.url} target="_blank" rel="noopener noreferrer">
+                    View original
+                </a>
             </>
         );
     }
