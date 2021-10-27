@@ -1,12 +1,15 @@
+/* eslint-disable no-constant-condition */
 /* eslint-disable arrow-body-style */
 import React, { memo } from 'react';
 import { Button, Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
+
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
+import IconBtnControl from './IconBtnControl';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
 export const getFormattedMessage = text => {
@@ -67,6 +70,14 @@ const MessageItem = ({ messages, handleAdmin }) => {
                 <TimeAgo
                     datetime={createdAt}
                     className="font-normal text-black-60 ml-2"
+                />
+
+                <IconBtnControl
+                    {...(true ? { color: 'red' } : {})}
+                    isVisible
+                    tooltip="Like this message"
+                    onClick={() => {}}
+                    badgeContent={2}
                 />
             </div>
 
