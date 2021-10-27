@@ -11,9 +11,25 @@ import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
 import IconBtnControl from './IconBtnControl';
+import ImgBtnModal from './ImgBtnModal';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
+const renderFileMessage = file => {
+    if (file.contentType.includes('image')) {
+        return (
+            <div className="height-220">
+                <ImgBtnModal src={file.url} fileName={file.name} />
+            </div>
+        );
+    }
+
+    return <a href={file.url}>Download {file.name}</a>;
+};
+
 export const getFormattedMessage = text => {
+    if (typeof text !== 'string') {
+        return text;
+    }
     const lines = text.split('\n');
 
     return lines.map(line => (
@@ -24,7 +40,7 @@ export const getFormattedMessage = text => {
 };
 
 const MessageItem = ({ messages, handleAdmin, handleLike, handleDelete }) => {
-    const { author, createdAt, text, likes, likeCount } = messages;
+    const { author, createdAt, file, text, likes, likeCount } = messages;
 
     const [selfRef, isHover] = useHover();
 
@@ -101,9 +117,12 @@ const MessageItem = ({ messages, handleAdmin, handleLike, handleDelete }) => {
 
             <div>
                 <Message>
-                    <span className="word-break-all">
-                        {getFormattedMessage(text)}
-                    </span>
+                    {text && (
+                        <span className="word-break-all">
+                            {getFormattedMessage(text)}
+                        </span>
+                    )}
+                    {file && renderFileMessage(file)}
                 </Message>
             </div>
         </li>

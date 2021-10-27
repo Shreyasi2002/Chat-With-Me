@@ -35,7 +35,9 @@ const RoomItem = ({ room }) => {
                             <div>
                                 <b>{lastMessage.author.name}</b>
                             </div>
-                            <span>{lastMessage.text}</span>
+                            <span>
+                                {lastMessage.text || lastMessage.file.name}
+                            </span>
                         </div>
                     </>
                 ) : (

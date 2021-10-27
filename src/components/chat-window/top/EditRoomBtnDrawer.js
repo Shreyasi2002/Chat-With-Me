@@ -57,7 +57,6 @@ const EditRoomBtnDrawer = () => {
     return (
         <div>
             <IconButton
-                circle
                 size="sm"
                 color="red"
                 onClick={open}
