@@ -1,6 +1,10 @@
 /* eslint-disable arrow-body-style */
 import React, { memo } from 'react';
-import { Button, Modal } from 'rsuite';
+import { Button, IconButton, Modal } from 'rsuite';
+
+import { Icon } from '@rsuite/icons';
+import { HiInformationCircle } from 'react-icons/hi';
+
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useModalState } from '../../../misc/custom-hooks';
 
@@ -12,9 +16,13 @@ const RoomInfoBtnModal = () => {
 
     return (
         <>
-            <Button appearance="link" className="px-0" onClick={open}>
-                Room Information
-            </Button>
+            <IconButton
+                circle
+                icon={<Icon as={HiInformationCircle} />}
+                className="px-0 ml-1"
+                onClick={open}
+            />
+            {/* Room Information */}
             <Modal open={isOpen} onClose={close}>
                 <Modal.Header>
                     <Modal.Title>

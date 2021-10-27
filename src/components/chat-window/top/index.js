@@ -30,17 +30,14 @@ const Top = () => {
                                 : 'd-none'
                         }
                     />
-                    <span className="text-disappear">{name}</span>
+                    <span className="text-disappear">
+                        {name} <RoomInfoBtnModal />
+                    </span>
                 </h4>
 
                 <ButtonToolbar className="ws-nowrap">
                     {isAdmin && <EditRoomBtnDrawer />}
                 </ButtonToolbar>
-            </div>
-
-            <div className="d-flex justify-content-between align-items-center">
-                <span>Todo</span>
-                <RoomInfoBtnModal />
             </div>
         </div>
     );
