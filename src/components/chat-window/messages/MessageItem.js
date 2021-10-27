@@ -22,8 +22,8 @@ export const getFormattedMessage = text => {
     ));
 };
 
-const MessageItem = ({ messages, handleAdmin }) => {
-    const { author, createdAt, text } = messages;
+const MessageItem = ({ messages, handleAdmin, handleLike }) => {
+    const { author, createdAt, text, likes, likeCount } = messages;
 
     const isAdmin = useCurrentRoom(v => v.isAdmin);
     const admins = useCurrentRoom(v => v.admins);
@@ -32,6 +32,8 @@ const MessageItem = ({ messages, handleAdmin }) => {
     const isAuthor = auth.currentUser.uid === author.uid;
 
     const canGrantAdmin = isAdmin && !isAuthor;
+
+    const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
     return (
         <li className="padded mb-1">
@@ -73,11 +75,10 @@ const MessageItem = ({ messages, handleAdmin }) => {
                 />
 
                 <IconBtnControl
-                    {...(true ? { color: 'red' } : {})}
-                    isVisible
+                    isLiked={isLiked}
                     tooltip="Like this message"
-                    onClick={() => {}}
-                    badgeContent={2}
+                    onClick={() => handleLike(messages.id)}
+                    badgeContent={likeCount}
                 />
             </div>
 

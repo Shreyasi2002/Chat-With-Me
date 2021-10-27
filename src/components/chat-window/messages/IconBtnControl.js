@@ -28,17 +28,15 @@ const HeartSvg = React.forwardRef((props, ref) => (
 ));
 
 const IconBtnControl = ({
-    isVisible,
+    isLiked,
+
     tooltip,
     onClick,
     badgeContent,
     ...props
 }) => {
     return (
-        <div
-            className="ml-3"
-            style={{ visibility: isVisible ? 'visible' : 'hidden' }}
-        >
+        <div className="ml-3">
             <ConditionalBadge condition={badgeContent}>
                 <Whisper
                     placement="top"
@@ -54,7 +52,7 @@ const IconBtnControl = ({
                         circle
                         size="xs"
                         icon={
-                            badgeContent === 0 ? (
+                            !isLiked ? (
                                 <Icon as={FaHeart} />
                             ) : (
                                 <Icon as={HeartSvg} style={{ color: 'red' }} />
