@@ -1,8 +1,13 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
+
+import { Icon } from '@rsuite/icons';
 import React, { memo } from 'react';
 import { useParams } from 'react-router';
 import { Button, Divider, Drawer, toaster, Message } from 'rsuite';
+
+import { FaEdit } from 'react-icons/fa';
+
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery, useModalState } from '../../../misc/custom-hooks';
 import { database } from '../../../misc/firebase';
@@ -52,7 +57,7 @@ const EditRoomBtnDrawer = () => {
     return (
         <div>
             <Button className="br-circle" size="sm" color="red" onClick={open}>
-                A
+                <Icon as={FaEdit} size="1.5em" />
             </Button>
 
             <Drawer
@@ -62,7 +67,7 @@ const EditRoomBtnDrawer = () => {
                 placement="right"
             >
                 <Drawer.Header>
-                    <Drawer.Title>Edit Room</Drawer.Title>
+                    <Drawer.Title>Edit Room Information</Drawer.Title>
                 </Drawer.Header>
 
                 <Drawer.Body

@@ -10,7 +10,7 @@ import firebase from 'firebase/compat/app';
 import { Button, Form, Input, Modal, Schema, toaster, Message } from 'rsuite';
 
 import { useModalState } from '../misc/custom-hooks';
-import { database } from '../misc/firebase';
+import { auth, database } from '../misc/firebase';
 
 const Textarea = React.forwardRef((props, ref) => (
     <Input {...props} as="textarea" ref={ref} />
@@ -49,6 +49,9 @@ const CreateRoomBtnModal = () => {
         const newRoomData = {
             ...formValue,
             createdAt: firebase.database.ServerValue.TIMESTAMP,
+            admins: {
+                [auth.currentUser.uid]: true,
+            },
         };
 
         try {

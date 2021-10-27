@@ -29,7 +29,7 @@ const MessageItem = ({ messages }) => {
                             src={author.avatar}
                             name={author.name}
                             className="ml-1"
-                            size="s"
+                            size="md"
                         />
                     }
                 />
