@@ -1,8 +1,9 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
 
 import { Icon } from '@rsuite/icons';
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useParams } from 'react-router';
 import { Button, Divider, Drawer, toaster, Message, IconButton } from 'rsuite';
 
@@ -10,7 +11,7 @@ import { FaEdit } from 'react-icons/fa';
 
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery, useModalState } from '../../../misc/custom-hooks';
-import { database } from '../../../misc/firebase';
+import { database, storage } from '../../../misc/firebase';
 import EditableDescription from '../../EditableDescription';
 import EditableInput from '../../EditableInput';
 
@@ -53,6 +54,31 @@ const EditRoomBtnDrawer = () => {
     const onDescriptionSave = newDescription => {
         updateData('description', newDescription);
     };
+
+    const handleDelete = useCallback(async () => {
+        if (!window.confirm('Are you sure to delete this room?')) {
+            return;
+        }
+        const updates = {};
+
+        updates[`/rooms/${chatId}`] = null;
+
+        try {
+            await database.ref().update(updates);
+
+            toaster.push(
+                <Message showIcon type="success" duration={4000}>
+                    Success : Room has been successfully deleted.
+                </Message>
+            );
+        } catch (error) {
+            toaster.push(
+                <Message showIcon type="error" duration={4000}>
+                    {error.message}
+                </Message>
+            );
+        }
+    }, [chatId]);
 
     return (
         <div>
@@ -107,9 +133,17 @@ const EditRoomBtnDrawer = () => {
                             block
                             onClick={close}
                             color="red"
-                            appearance="primary"
+                            appearance="ghost"
                         >
                             Close
+                        </Button>
+                        <Button
+                            block
+                            onClick={() => handleDelete()}
+                            color="red"
+                            appearance="primary"
+                        >
+                            Delete This Room
                         </Button>
                     </Drawer.Actions>
                 </Drawer.Body>

@@ -13,6 +13,8 @@ import { CurrentRoomProvider } from '../../context/current-room.context';
 import { transformToArray } from '../../misc/helpers';
 import { auth } from '../../misc/firebase';
 
+import NOT_FOUND from '../../images/OOPS.png';
+
 const Chat = () => {
     const { chatId } = useParams();
 
@@ -23,7 +25,33 @@ const Chat = () => {
 
     const currentRoom = rooms.find(room => room.id === chatId);
     if (!currentRoom) {
-        return <h6 className="text-center mt-page">Chatroom not found</h6>;
+        return (
+            <>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <img
+                        src={NOT_FOUND}
+                        alt="start"
+                        className="mt-page shadow"
+                    />
+                </div>
+                <br />
+                <h4
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                        fontFamily: 'fantasy',
+                    }}
+                >
+                    <b>Chatroom not found</b>
+                </h4>
+            </>
+        );
     }
 
     const { name, description } = currentRoom;
