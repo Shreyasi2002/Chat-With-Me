@@ -60,7 +60,8 @@ const EditRoomBtnDrawer = () => {
                 size="sm"
                 color="red"
                 onClick={open}
-                icon={<Icon as={FaEdit} size="1.5em" />}
+                icon={<Icon as={FaEdit} size="1.3em" />}
+                style={{ marginTop: '-3px' }}
             />
             {/* <Icon as={FaEdit} size="1.5em" /> */}
             {/* </IconButton> */}

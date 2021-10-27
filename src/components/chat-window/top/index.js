@@ -2,9 +2,10 @@
 /* eslint-disable arrow-body-style */
 import React, { memo } from 'react';
 
-import { ButtonToolbar, IconButton } from 'rsuite';
+import { ButtonToolbar, Divider, IconButton } from 'rsuite';
 import { Icon } from '@rsuite/icons';
 import { BsBoxArrowLeft } from 'react-icons/bs';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useMediaQuery } from '../../../misc/custom-hooks';
@@ -18,7 +19,7 @@ const Top = () => {
     const isMobile = useMediaQuery('(max-width: 992px)');
 
     return (
-        <div>
+        <div style={{ marginTop: '-2%' }}>
             <div className="d-flex justify-content-between align-items-center">
                 <h4 className="text-disappear d-flex align-items-center">
                     <IconButton
@@ -30,14 +31,29 @@ const Top = () => {
                                 : 'd-none'
                         }
                     />
-                    <span className="text-disappear">
-                        {name} <RoomInfoBtnModal />
-                    </span>
+                    <span className="text-disappear">{name} </span>{' '}
+                    <RoomInfoBtnModal />
+                    <Divider vertical />
+                    <ButtonToolbar className="ws-nowrap">
+                        {isAdmin && <EditRoomBtnDrawer />}
+                    </ButtonToolbar>
                 </h4>
 
-                <ButtonToolbar className="ws-nowrap">
-                    {isAdmin && <EditRoomBtnDrawer />}
-                </ButtonToolbar>
+                <>
+                    <IconButton
+                        icon={
+                            <Icon as={AiOutlineClose} color="red" size="1em" />
+                        }
+                        href="/"
+                        size="sm"
+                        className={
+                            !isMobile
+                                ? 'd-inline-block p-0 text-blue link-unstyled'
+                                : 'd-none'
+                        }
+                        style={{ marginTop: '-2%' }}
+                    />
+                </>
             </div>
         </div>
     );
