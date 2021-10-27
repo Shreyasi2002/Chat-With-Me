@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 /* eslint-disable no-constant-condition */
 /* eslint-disable arrow-body-style */
 import React, { memo } from 'react';
@@ -20,6 +21,15 @@ const renderFileMessage = file => {
             <div className="height-220">
                 <ImgBtnModal src={file.url} fileName={file.name} />
             </div>
+        );
+    }
+
+    if (file.name.includes('audio') && file.name.includes('webm')) {
+        return (
+            <audio controls>
+                <source src={file.url} type="audio/webm" />
+                Your browser does not support the audio element...
+            </audio>
         );
     }
 
@@ -110,7 +120,7 @@ const MessageItem = ({ messages, handleAdmin, handleLike, handleDelete }) => {
                     <IconBtnControl
                         heart={false}
                         tooltip="Delete this message"
-                        onClick={() => handleDelete(messages.id)}
+                        onClick={() => handleDelete(messages.id, file)}
                     />
                 )}
             </div>

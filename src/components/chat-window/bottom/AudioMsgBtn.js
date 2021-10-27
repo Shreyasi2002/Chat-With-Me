@@ -26,7 +26,7 @@ const AudioMsgBtn = ({ afterUpload }) => {
             try {
                 const snap = await storage
                     .ref(`/chat/${chatId}`)
-                    .child(`audio_${Date.now()}.mp3`)
+                    .child(`audio_${Date.now()}.webm`)
                     .put(data.blobFile, {
                         cacheControl: `public, max-age=${3600 * 24 * 3}`,
                     });
@@ -64,7 +64,6 @@ const AudioMsgBtn = ({ afterUpload }) => {
                     record={isRecording}
                     className="d-none"
                     onStop={onUpload}
-                    mimeType="audio/mp3"
                 />
             </InputGroup.Button>
         </>

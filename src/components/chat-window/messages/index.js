@@ -1,9 +1,10 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-alert */
 /* eslint-disable arrow-body-style */
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Message, toaster } from 'rsuite';
-import { auth, database } from '../../../misc/firebase';
+import { auth, database, storage } from '../../../misc/firebase';
 import { transformToArrayWithId } from '../../../misc/helpers';
 import MessageItem from './MessageItem';
 
@@ -92,7 +93,7 @@ const Messages = () => {
     }, []);
 
     const handleDelete = useCallback(
-        async msgId => {
+        async (msgId, file) => {
             if (!window.confirm('Are you sure to delete this message?')) {
                 return;
             }
@@ -121,11 +122,24 @@ const Messages = () => {
                     </Message>
                 );
             } catch (error) {
-                toaster.push(
+                return toaster.push(
                     <Message showIcon type="error" duration={4000}>
                         {error.message}
                     </Message>
                 );
+            }
+
+            if (file) {
+                try {
+                    const fileRef = storage.refFromURL(file.url);
+                    await fileRef.delete();
+                } catch (error) {
+                    toaster.push(
+                        <Message showIcon type="error" duration={4000}>
+                            {error.message}
+                        </Message>
+                    );
+                }
             }
         },
         [chatId, messages]
