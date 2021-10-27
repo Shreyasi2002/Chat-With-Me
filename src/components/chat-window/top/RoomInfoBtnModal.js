@@ -17,10 +17,10 @@ const RoomInfoBtnModal = () => {
     return (
         <>
             <IconButton
-                circle
                 icon={<Icon as={HiInformationCircle} />}
                 className="px-0 ml-1"
                 onClick={open}
+                style={{ marginTop: '-2%' }}
             />
             {/* Room Information */}
             <Modal open={isOpen} onClose={close}>

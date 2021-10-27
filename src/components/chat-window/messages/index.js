@@ -10,6 +10,8 @@ import { auth, database, storage } from '../../../misc/firebase';
 import { groupBy, transformToArrayWithId } from '../../../misc/helpers';
 import MessageItem from './MessageItem';
 
+import NO_MESSAGES from '../../../images/Nothing.png';
+
 const messagesRef = database.ref('/messages');
 
 const Messages = () => {
@@ -179,7 +181,33 @@ const Messages = () => {
 
     return (
         <ul className="msg-list custom-scroll">
-            {isChatEmpty && <li>No messages yet</li>}
+            {isChatEmpty && (
+                <>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <img
+                            src={NO_MESSAGES}
+                            alt="start"
+                            className="mt-page shadow"
+                        />
+                    </div>
+                    <br />
+                    <h4
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            textAlign: 'center',
+                            fontFamily: 'fantasy',
+                        }}
+                    >
+                        <b>No messages yet</b>
+                    </h4>
+                </>
+            )}
             {canShowMessages && renderMessages()}
         </ul>
     );
