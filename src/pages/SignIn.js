@@ -8,7 +8,7 @@ import firebase from 'firebase/compat/app';
 
 import * as facebook from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
 import * as google from '@fortawesome/free-brands-svg-icons/faGoogle';
-import * as email from '@fortawesome/free-solid-svg-icons/faEnvelope';
+// import * as email from '@fortawesome/free-solid-svg-icons/faEnvelope';
 
 import {
     Button,
@@ -21,6 +21,8 @@ import {
     toaster,
 } from 'rsuite';
 import { auth, database } from '../misc/firebase';
+
+import CHAT from '../images/chatting.png';
 
 const FaSvgIcon = ({ faIcon, ...rest }) => {
     const { width, height, svgPathData } = faIcon;
@@ -70,9 +72,9 @@ const SignIn = () => {
     const onGoogleSignIn = () => {
         signInWithProvider(new firebase.auth.GoogleAuthProvider());
     };
-    const onEmailSignIn = () => {
-        signInWithProvider(new firebase.auth.EmailAuthProvider());
-    };
+    // const onEmailSignIn = () => {
+    //     signInWithProvider(new firebase.auth.EmailAuthProvider());
+    // };
 
     return (
         <Container>
@@ -92,15 +94,28 @@ const SignIn = () => {
                                 <p>Progressive Chat Platform for ...</p>
                             </div>
 
+                            <img
+                                src={CHAT}
+                                alt="chat"
+                                style={{
+                                    padding: 0,
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignContent: 'center',
+                                    width: 'auto',
+                                }}
+                                className="mt-3 mt-page h-100"
+                            />
+
                             <div className="mt-3">
-                                <Button
+                                {/* <Button
                                     appearance="ghost"
                                     block
                                     onClick={onEmailSignIn}
                                 >
                                     <Icon as={FaSvgIcon} faIcon={email} />{' '}
                                     Continue with Email/Password
-                                </Button>
+                                </Button> */}
                                 <Button
                                     color="blue"
                                     appearance="primary"
