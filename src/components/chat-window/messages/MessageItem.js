@@ -22,7 +22,7 @@ export const getFormattedMessage = text => {
     ));
 };
 
-const MessageItem = ({ messages, handleAdmin, handleLike }) => {
+const MessageItem = ({ messages, handleAdmin, handleLike, handleDelete }) => {
     const { author, createdAt, text, likes, likeCount } = messages;
 
     const isAdmin = useCurrentRoom(v => v.isAdmin);
@@ -75,11 +75,20 @@ const MessageItem = ({ messages, handleAdmin, handleLike }) => {
                 />
 
                 <IconBtnControl
+                    heart
                     isLiked={isLiked}
                     tooltip="Like this message"
                     onClick={() => handleLike(messages.id)}
                     badgeContent={likeCount}
                 />
+
+                {isAuthor && (
+                    <IconBtnControl
+                        heart={false}
+                        tooltip="Delete this message"
+                        onClick={() => handleDelete(messages.id)}
+                    />
+                )}
             </div>
 
             <div>

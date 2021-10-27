@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
 /* eslint-disable arrow-body-style */
 import Icon from '@rsuite/icons/lib/Icon';
@@ -5,6 +6,7 @@ import React from 'react';
 import { Badge, IconButton, Tooltip, Whisper } from 'rsuite';
 
 import { FaHeart } from 'react-icons/fa';
+import { IoClose } from 'react-icons/io5';
 
 const ConditionalBadge = ({ condition, children }) => {
     return condition ? (
@@ -29,7 +31,7 @@ const HeartSvg = React.forwardRef((props, ref) => (
 
 const IconBtnControl = ({
     isLiked,
-
+    heart,
     tooltip,
     onClick,
     badgeContent,
@@ -52,10 +54,17 @@ const IconBtnControl = ({
                         circle
                         size="xs"
                         icon={
-                            !isLiked ? (
-                                <Icon as={FaHeart} />
+                            heart ? (
+                                !isLiked ? (
+                                    <Icon as={FaHeart} />
+                                ) : (
+                                    <Icon
+                                        as={HeartSvg}
+                                        style={{ color: 'red' }}
+                                    />
+                                )
                             ) : (
-                                <Icon as={HeartSvg} style={{ color: 'red' }} />
+                                <Icon as={IoClose} />
                             )
                         }
                     />
