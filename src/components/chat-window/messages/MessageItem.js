@@ -5,8 +5,6 @@ import React, { memo } from 'react';
 import { Button, Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
 
-import ReactAudioPlayer from 'react-audio-player';
-
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useHover } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
@@ -24,10 +22,6 @@ const renderFileMessage = file => {
                 <ImgBtnModal src={file.url} fileName={file.name} />
             </div>
         );
-    }
-
-    if (file.name.includes('audio') && file.name.includes('webm')) {
-        return <ReactAudioPlayer src={file.url} autoPlay controls />;
     }
 
     return <a href={file.url}>Download {file.name}</a>;
