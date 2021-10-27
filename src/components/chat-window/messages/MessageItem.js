@@ -1,7 +1,9 @@
 /* eslint-disable arrow-body-style */
-import React from 'react';
-import { Message } from 'rsuite';
+import React, { memo } from 'react';
+import { Button, Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
+import { useCurrentRoom } from '../../../context/current-room.context';
+import { auth } from '../../../misc/firebase';
 import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
@@ -17,8 +19,16 @@ export const getFormattedMessage = text => {
     ));
 };
 
-const MessageItem = ({ messages }) => {
+const MessageItem = ({ messages, handleAdmin }) => {
     const { author, createdAt, text } = messages;
+
+    const isAdmin = useCurrentRoom(v => v.isAdmin);
+    const admins = useCurrentRoom(v => v.admins);
+
+    const isMsgAuthorAdmin = admins.includes(author.uid);
+    const isAuthor = auth.currentUser.uid === author.uid;
+
+    const canGrantAdmin = isAdmin && !isAuthor;
 
     return (
         <li className="padded mb-1">
@@ -38,7 +48,21 @@ const MessageItem = ({ messages }) => {
                     profile={author}
                     appearance="link"
                     className="p-0 ml-2 text-black"
-                />
+                >
+                    <br />
+                    {canGrantAdmin && (
+                        <Button
+                            block
+                            onClick={() => handleAdmin(author.uid)}
+                            color="blue"
+                            appearance="primary"
+                        >
+                            {isMsgAuthorAdmin
+                                ? 'Remove Admin Permission'
+                                : 'Give Admin Permission For This Room'}
+                        </Button>
+                    )}
+                </ProfileInfoBtnModal>
 
                 <TimeAgo
                     datetime={createdAt}
@@ -57,4 +81,4 @@ const MessageItem = ({ messages }) => {
     );
 };
 
-export default MessageItem;
+export default memo(MessageItem);
