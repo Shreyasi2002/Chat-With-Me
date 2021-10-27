@@ -6,6 +6,7 @@ import { Button, Message } from 'rsuite';
 import TimeAgo from 'timeago-react';
 
 import ReactAudioPlayer from 'react-audio-player';
+import ReactPlayer from 'react-player';
 
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useHover } from '../../../misc/custom-hooks';
@@ -29,9 +30,27 @@ const renderFileMessage = file => {
     if (file.contentType.includes('audio')) {
         return (
             <>
-                <ReactAudioPlayer src={file.url} autoPlay controls />
+                <ReactAudioPlayer src={file.url} controls />
                 <br />
                 <a href={file.url}>Download original</a>
+            </>
+        );
+    }
+
+    if (file.contentType.includes('video')) {
+        return (
+            <>
+                <div className="player-wrapper">
+                    <ReactPlayer
+                        className="react-player"
+                        url={file.url}
+                        width="100%"
+                        height="100%"
+                    />
+                </div>
+                <a href={file.url} target="_blank" rel="noopener noreferrer">
+                    View original
+                </a>
             </>
         );
     }
