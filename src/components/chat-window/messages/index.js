@@ -34,12 +34,6 @@ const Messages = () => {
                 .on('value', snap => {
                     const data = transformToArrayWithId(snap.val());
                     setMessages(data);
-
-                    const node = selfRef.current;
-
-                    setTimeout(() => {
-                        node.scrollTop = node.scrollHeight;
-                    }, 200);
                 });
 
             setLimit(p => p + PAGE_SIZE);

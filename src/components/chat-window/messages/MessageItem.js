@@ -8,6 +8,8 @@ import TimeAgo from 'timeago-react';
 import ReactAudioPlayer from 'react-audio-player';
 import ReactPlayer from 'react-player';
 
+import Linkify from 'react-linkify';
+
 import { useCurrentRoom } from '../../../context/current-room.context';
 import { useHover } from '../../../misc/custom-hooks';
 import { auth } from '../../../misc/firebase';
@@ -152,9 +154,11 @@ const MessageItem = ({ messages, handleAdmin, handleLike, handleDelete }) => {
             <div>
                 <Message>
                     {text && (
-                        <span className="word-break-all">
-                            {getFormattedMessage(text)}
-                        </span>
+                        <Linkify>
+                            <span className="word-break-all">
+                                {getFormattedMessage(text)}
+                            </span>
+                        </Linkify>
                     )}
                     {file && renderFileMessage(file)}
                 </Message>
