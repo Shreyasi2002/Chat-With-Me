@@ -4,7 +4,7 @@
 import { Icon } from '@rsuite/icons';
 import React, { memo } from 'react';
 import { useParams } from 'react-router';
-import { Button, Divider, Drawer, toaster, Message } from 'rsuite';
+import { Button, Divider, Drawer, toaster, Message, IconButton } from 'rsuite';
 
 import { FaEdit } from 'react-icons/fa';
 
@@ -56,9 +56,15 @@ const EditRoomBtnDrawer = () => {
 
     return (
         <div>
-            <Button className="br-circle" size="sm" color="red" onClick={open}>
-                <Icon as={FaEdit} size="1.5em" />
-            </Button>
+            <IconButton
+                circle
+                size="sm"
+                color="red"
+                onClick={open}
+                icon={<Icon as={FaEdit} size="1.5em" />}
+            />
+            {/* <Icon as={FaEdit} size="1.5em" /> */}
+            {/* </IconButton> */}
 
             <Drawer
                 full={isMobile}

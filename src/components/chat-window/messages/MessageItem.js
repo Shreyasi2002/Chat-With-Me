@@ -5,6 +5,7 @@ import TimeAgo from 'timeago-react';
 import PresenceDot from '../../PresenceDot';
 
 import ProfileAvatar from '../../ProfileAvatar';
+import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 
 export const getFormattedMessage = text => {
     const lines = text.split('\n');
@@ -33,8 +34,11 @@ const MessageItem = ({ messages }) => {
                         />
                     }
                 />
-
-                <span className="ml-2">{author.name}</span>
+                <ProfileInfoBtnModal
+                    profile={author}
+                    appearance="link"
+                    className="p-0 ml-2 text-black"
+                />
 
                 <TimeAgo
                     datetime={createdAt}
