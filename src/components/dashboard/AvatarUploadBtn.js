@@ -1,9 +1,9 @@
 /* eslint-disable arrow-body-style */
 import React, { useState, useRef } from 'react';
-import { Button, Modal, toaster, Message, Whisper, Tooltip } from 'rsuite';
+import { Button, Modal, toaster, Message } from 'rsuite';
 
-// import { Icon } from '@rsuite/icons';
-// import { FaCamera } from 'react-icons/fa';
+import { Icon } from '@rsuite/icons';
+import { FaCamera } from 'react-icons/fa';
 
 import AvatarEditor from 'react-avatar-editor';
 
@@ -109,31 +109,26 @@ const AvatarUploadBtn = () => {
     return (
         <div className="mt-3 text-center">
             <div>
-                <Whisper
-                    placement="top"
-                    controlId="control-id-hover"
-                    trigger="hover"
-                    speaker={<Tooltip>Update Profile Picture</Tooltip>}
+                <ProfileAvatar
+                    src={profile.avatar}
+                    name={profile.name}
+                    className="width-180 height-180 img-fullsize font-huge"
+                />
+                <label
+                    htmlFor="avatar-upload"
+                    className="d-block cursor-pointer"
                 >
-                    <label
-                        htmlFor="avatar-upload"
-                        className="d-block cursor-pointer"
-                    >
-                        <ProfileAvatar
-                            src={profile.avatar}
-                            name={profile.name}
-                            className="width-180 height-180 img-fullsize font-huge shadow"
-                        />
-
-                        <input
-                            id="avatar-upload"
-                            type="file"
-                            className="d-none"
-                            accept={fileInputTypes}
-                            onChange={onFileInputChange}
-                        />
-                    </label>
-                </Whisper>
+                    Update Profile Picture
+                    <input
+                        id="avatar-upload"
+                        type="file"
+                        className="d-none"
+                        accept={fileInputTypes}
+                        onChange={onFileInputChange}
+                    />
+                    <br />
+                    <Icon as={FaCamera} size="1.3em" />
+                </label>
 
                 <Modal open={isOpen} onClose={close}>
                     <Modal.Header>

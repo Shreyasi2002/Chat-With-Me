@@ -192,7 +192,7 @@ const Messages = () => {
                         <img
                             src={NO_MESSAGES}
                             alt="start"
-                            className="mt-page shadow"
+                            className="mt-page"
                         />
                     </div>
 

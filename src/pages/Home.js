@@ -49,7 +49,7 @@ const Home = () => {
                                         <img
                                             src={START_IMAGE}
                                             alt="start"
-                                            className="mt-page shadow"
+                                            className="mt-page"
                                         />
                                     </div>
 
