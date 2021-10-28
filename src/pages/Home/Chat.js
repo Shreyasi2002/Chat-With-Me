@@ -36,11 +36,7 @@ const Chat = () => {
                         justifyContent: 'center',
                     }}
                 >
-                    <img
-                        src={NOT_FOUND}
-                        alt="start"
-                        className="mt-page shadow"
-                    />
+                    <img src={NOT_FOUND} alt="start" className="mt-page" />
                 </div>
                 <br />
                 <h4
