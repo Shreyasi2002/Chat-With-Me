@@ -54,7 +54,7 @@ const DashboardShow = ({ onSignout }) => {
                     marginRight: '-6%',
                 }}
             >
-                <h3>Hey, {profile.name}</h3>
+                <h4>Hey, {profile.name}</h4>
                 <ProviderBlock />
                 <Divider />
                 <AvatarUploadBtn />

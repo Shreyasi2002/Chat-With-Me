@@ -25,7 +25,9 @@ const Sidebar = () => {
         <div className="h-100 pt-2">
             <div ref={topSidebarRef}>
                 <Icon as={FaHome} size="2.5em" className="mb-1" />{' '}
-                <b style={{ fontFamily: 'fantasy' }}>Chat With Me</b>{' '}
+                <b style={{ fontFamily: 'cursive', fontSize: '20px' }}>
+                    Chat With Me
+                </b>{' '}
                 <Icon as={GiChatBubble} size="1.5em" className="mb-2" />
                 <br />
                 <DashboardToggle />

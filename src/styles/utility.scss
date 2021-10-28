@@ -43,6 +43,14 @@ $indent_3: 15px;
     height: 200px;
 }
 
+.width-180 {
+    width: 180px;
+}
+
+.height-180 {
+    height: 180px;
+}
+
 .height-220 {
     height: 220px;
 }
@@ -172,7 +180,7 @@ $indent_3: 15px;
 }
 
 .mt-page {
-    margin-top: 150px;
+    margin-top: 10%;
 }
 
 .mt-1 {
@@ -256,4 +264,10 @@ $indent_3: 15px;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.shadow {
+    &:hover {
+        opacity: 70%;
+    }
 }

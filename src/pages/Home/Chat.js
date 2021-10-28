@@ -2,7 +2,7 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import { useParams } from 'react-router';
-import { Loader } from 'rsuite';
+import { Button, Loader } from 'rsuite';
 
 import ChatTop from '../../components/chat-window/top';
 import ChatBottom from '../../components/chat-window/bottom';
@@ -12,11 +12,14 @@ import { CurrentRoomProvider } from '../../context/current-room.context';
 import { transformToArray } from '../../misc/helpers';
 import { auth } from '../../misc/firebase';
 
-import NOT_FOUND from '../../images/OOPS.png';
+import NOT_FOUND from '../../images/404.png';
 import Messages from '../../components/chat-window/messages';
+import { useMediaQuery } from '../../misc/custom-hooks';
 
 const Chat = () => {
     const { chatId } = useParams();
+
+    const isMobile = useMediaQuery('(max-width: 992px)');
 
     const rooms = useRooms();
     if (!rooms) {
@@ -45,11 +48,24 @@ const Chat = () => {
                         display: 'flex',
                         justifyContent: 'center',
                         textAlign: 'center',
-                        fontFamily: 'fantasy',
+                        fontFamily: 'cursive',
                     }}
                 >
-                    <b>Chatroom not found</b>
+                    <b>OOPS! Chatroom not found</b>
                 </h4>
+                <br />
+                {isMobile && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <Button href="/" appearance="primary">
+                            Go Back
+                        </Button>
+                    </div>
+                )}
             </>
         );
     }

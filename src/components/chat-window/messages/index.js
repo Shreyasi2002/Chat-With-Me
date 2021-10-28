@@ -195,13 +195,13 @@ const Messages = () => {
                             className="mt-page shadow"
                         />
                     </div>
-                    <br />
+
                     <h4
                         style={{
                             display: 'flex',
                             justifyContent: 'center',
                             textAlign: 'center',
-                            fontFamily: 'fantasy',
+                            fontFamily: 'cursive',
                         }}
                     >
                         <b>No messages yet</b>
